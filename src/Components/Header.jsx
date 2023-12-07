@@ -1,5 +1,6 @@
 import { AppBar, Button, Toolbar, Typography } from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const toolbarStyle = {
     display: 'flex',
@@ -13,20 +14,23 @@ const appBarBtnStyle = {
 }
 
 function Header() {
+
+    const navi = useNavigate()
+
     return (
-        <AppBar>
+        <AppBar position="static">
             <Toolbar sx={toolbarStyle}>
                 <div>
-                    <Button><Typography variant='h4' sx={{color:'white'}}>wucziapping</Typography></Button>
+                    <Button onClick={()=>navi('/')}><Typography variant='h4' sx={{color:'white'}}>wucziapping</Typography></Button>
                 </div>
                 <div>
-                    <Button sx={appBarBtnStyle}>Pytania zamknięte</Button>
-                    <Button sx={appBarBtnStyle}>Pytania otwarte</Button>
-                    <Button sx={appBarBtnStyle}>Kafelki</Button>
-                    <Button sx={appBarBtnStyle}>Egzamin</Button>
+                    <Button onClick={()=>navi('/closed-ended-questions')} sx={appBarBtnStyle}>Pytania zamknięte</Button>
+                    <Button onClick={()=>navi('/open-ended-questions')} sx={appBarBtnStyle}>Pytania otwarte</Button>
+                    <Button onClick={()=>navi('/drag-drop-questions')}sx={appBarBtnStyle}>Kafelki</Button>
+                    <Button onClick={()=>navi('/exam')} sx={appBarBtnStyle}>Egzamin</Button>
                 </div>
                 <div>
-                    <Button sx={appBarBtnStyle}>Zaloguj</Button>
+                    <Button onClick={()=>navi('/login')} sx={appBarBtnStyle}>Zaloguj</Button>
                 </div>
             </Toolbar>
         </AppBar>
